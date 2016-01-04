@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9ab677db-6ffa-4e87-9a4b-842701aad6b2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/books/css/main.css" afterPath="$PROJECT_DIR$/books/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/books/index.html" afterPath="$PROJECT_DIR$/books/index.html" />
     </list>
     <ignored path="daoyuly.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,8 +57,8 @@
       <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/books/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.10699002">
-              <caret line="5" column="2" selection-start-line="5" selection-start-column="0" selection-end-line="7" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.32097003">
+              <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -542,8 +541,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/books/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10699002">
-          <caret line="5" column="2" selection-start-line="5" selection-start-column="0" selection-end-line="7" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.32097003">
+          <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
           <folding />
         </state>
       </provider>
