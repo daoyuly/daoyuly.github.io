@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点赞看图片</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <style>
+
+        body {
+            width: 100%;
+            margin: auto 0;
+        }
+
+        .item .img {
+            width: 300px;
+            transition: all 0.5s ease;
+            overflow: hidden;
+        }
+
+        .item .blur {
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+            -moz-filter: blur(5px);
+            -o-filter: blur(5px);
+            -ms-filter: blur(5px);
+            margin: -5px -10px -10px -5px;
+        }
+
+        .item .label {
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="" style="margin-bottom: 20px">
+    微信圈火热的毛玻璃效果简单的css实现
+</div>
+
+
+<div class="item">
+    <img class="img blur" src="http://7xkf9y.com1.z0.glb.clouddn.com/36.jpg">
+    <div class="label">
+        <a class="like" href="javascript:;">点赞</a>
+    </div>
+</div>
+
+<script>
+
+    $('.like').click(function () {
+        $(this).parent().parent().find('img').removeClass('blur');
+    });
+
+</script>
+
+</body>
+</html>
