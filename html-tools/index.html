@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>他山之玉</title>
+    <link rel="shortcut icon" href="../images/favorite.ico">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../libs/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+
+
+
+</head>
+<body>
+
+<div>
+<label>开始(例如lang_26000)</label>  <input type="text" class="start">
+</div>
+
+<div class="wrap">
+    <textarea class="textContainer"></textarea>
+</div>
+<div>
+<a class="ok  btn btn-primary">确定</a>
+<a class="clear  btn ">清空</a>
+</div>
+
+<textarea class="textContainerResult"></textarea>
+
+
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script type="text/javascript" src="../libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../libs/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../javascripts/modernizr.js"></script>
+<script type="text/javascript" src="../javascripts/headsmart.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+  var result = '';
+
+  $('.ok').on('click',function(){
+     var content = $('.textContainer').val();
+     var textList = content.split('\n');
+     var index = parseInt($('.start').val().replace('lang_',''));
+     for (var i = 0,len= textList.length ; i<len; i++) {
+         result += '"lang_' + (index+i+1) + '":"' + textList[i] + '",' + '\n';
+     };
+
+     $('.textContainerResult').val(result);
+     
+  });
+
+  $('.clear').on('click',function() {
+     $('.textContainerResult').val('');
+     $('.textContainer').val('')
+  });
+
+
+});
+
+
+
+
+</script>
+
+
+</body>
+</html>
