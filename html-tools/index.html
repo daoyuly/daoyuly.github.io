@@ -53,7 +53,7 @@ $(document).ready(function() {
      var textList = content.split('\n');
      var index = parseInt($('.start').val().replace('lang_',''));
      for (var i = 0,len= textList.length ; i<len; i++) {
-         result += '"lang_' + (index+i+1) + '":"' + textList[i] + '",' + '\n';
+         result += '"lang_' + (index+i+1) + '": "' + textList[i] + '",' + '\n';
      };
 
      $('.textContainerResult').val(result);
