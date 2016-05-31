@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title></title>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <style>
+    body {
+      width: 960px;
+      margin: 0 auto;
+    }
+
+  </style>
+
+
+</head>
+<body>
+
+<br />
+<br />
+<br />
+
+<p>实际图片:</p>
+<img id="img" />
+
+
+<br />
+<br />
+<p>table 图片:</p>
+<div id="container"></div>
+
+
+
+
+<script type="text/javascript">
+
+// dom 性能检测
+  var MutationObserver = window.MutationObserver
+    || window.WebKitMutationObserver
+    || window.MozMutationObserver;
+
+  // 选择目标节点
+  var target = document.querySelector('#container');
+
+  // 创建观察者对象
+  var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.type == 'childList') {
+        console.log(mutation.type);
+        console.log(mutation.target);
+      }
+
+    });
+  });
+
+  // 配置观察选项:
+  var config = { attributes: true, childList: true, characterData: true, subtree: true }
+
+  // 传入目标节点和观察选项
+  observer.observe(target, config);
+
+/////////////////////////////////////////
+
+
+
+  var imgRender = function (conf) {
+    this.options = $.extend({}, conf);
+    this.canvas = document.createElement('canvas');
+    this.ctx = this.canvas.getContext('2d');
+  };
+
+  imgRender.prototype = {
+    addImg: function () {
+      var deferred = $.Deferred();
+      var self = this;
+      //this.img = new Image();
+      var img = document.getElementById('img');
+      img.onload = function (image) {
+        self.ctx.drawImage(img, 0, 0, img.width, img.height);
+        self.width = img.width;
+        self.height = img.height;
+        deferred.resolve();
+      }
+      img.src = this.options.url;
+      return deferred.promise();
+    },
+
+    make: function () {
+      var self = this;
+      var deferred = $.Deferred();
+      this.addImg(self.options.url).then(function () {
+        //self.ctx.drawImage(self.img, 0, 0, self.img.width, self.img.height);
+        this.imgageData = self.ctx.getImageData(0, 0, self.width, self.height);
+        deferred.resolve(this.imgageData);
+      });
+      return deferred.promise();
+    }
+  };
+
+
+  $(document).ready(function () {
+
+
+    var createTable = function () {
+
+      var render = new imgRender({
+        url: 'logo-90.png'
+      });
+      render.make().then(function (imgageData) {
+
+        console.log('bein');
+
+        var $table = $('<table></table>')
+          .css("width", render.width + "px")
+          .css("height", render.height + "px")
+          .css("border", "0px")
+          .css("border-collapse", "collapse")
+          .css('background-color', '#fff');
+
+        var tileW = '1';
+        var tileH = '1';
+
+        var data = imgageData.data;
+        // draw in the table
+        for (var row = 0; row < render.height; row++) {
+          var $row = $('<tr></tr>').css('height', tileH + "px").appendTo($table);
+          for (var col = 0; col < render.width; col++) {
+            var index = ((render.width * row) + col) * 4;
+            var red = data[index];
+            var green = data[index + 1];
+            var blue = data[index + 2];
+            var alpha = 255 / data[index + 3];
+            // console.log(alpha);
+
+            var color = 'rgba(' + red + "," + green + "," + blue + "," + alpha + ')';
+
+            $('<td></td>')
+              .css('width', tileW + "px")
+              .css({padding: 0})
+              .css('background', color)
+              .appendTo($row);
+          }
+        }
+        console.log('end table');
+        $('#container').append($table);
+        console.log('end');
+      })
+
+    }
+    createTable();
+
+  });
+
+
+
+</script>
+
+</body>
+</html>
