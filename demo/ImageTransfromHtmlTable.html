@@ -130,7 +130,7 @@
             var red = data[index];
             var green = data[index + 1];
             var blue = data[index + 2];
-            var alpha = 255 / data[index + 3];
+            var alpha = data[index + 3] / 255;
             // console.log(alpha);
 
             var color = 'rgba(' + red + "," + green + "," + blue + "," + alpha + ')';
