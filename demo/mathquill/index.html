@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)http://fex-team.github.io/kityformula/latex.html -->
+<html style="overflow-y: visible;">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="description" content="">
+
+  <title>表达式列表</title>
+
+  <link rel="stylesheet" type="text/css" media="screen" href="./app/css/reset.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="./app/css/main.css">
+  <link rel="stylesheet" href="./app/components/um-formula/um-formula.css">
+  <link rel="stylesheet" href="./app/components/mathquill/mathquill.css">
+
+  <script src="./app/libs/kf-kitygraph.all.min.js"></script>
+  <script src="./app/libs/kf-kity-formula.all.min.js"></script>
+  <script src="./app/libs/kf-kityformula-parser.all.min.js"></script>
+  <script src="./app/libs/jquery-1.11.0.min.js"></script>
+  <script src="./app/components/mathquill/mathquill.min.js"></script>
+
+  <script src="./app/components/um-formula/um-formula.js"></script>
+
+  <script src="./app/latex-parser-setup.js"></script>
+
+<body>
+
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+  <section id="main_content" class="inner">
+    <!-- 可视化编辑 -->
+    <div class="formula-declaration">
+      <div class="formula-notice">
+        <h1>Latex 解析器使用说明：</h1>
+        <ol>
+          <li>在“LaTeX表达式”文本框中输入LaTeX语法的表达式，你也可以通过点击输入框右下角的“选取预设表达式”按钮选取LaTeX表达式， 也可以通过“公式可视化编辑”进行可视化编辑。</li>
+          <li>在你输入符合LaTeX语法的公式后，Kity Formula会自动在“公式渲染结果”里绘制出公式。</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="latex-input-wrap">
+      <label for="latexInput">LaTeX表达式：</label>
+      <textarea id="latexInput" class="latex-input" placeholder="请输入LaTeX表达式" style="border-color: red;"></textarea>
+      <em id="errorTip" class="error-tip">对不起，还未支持该表达式的解析</em>
+      <button id="defaultLatexBtn" type="button" class="default-latex-btn">选取预设表达式</button>
+      <em></em>
+    </div>
+
+    <div class="latex-view-wrap latex-input-wrap">
+      <label for="latexView">公式可视化编辑：</label>
+      <button type="button" class="formula-pupop-btn">插入公式</button>
+      <div id="latexView" class="latex-input mathquill-rendered-math mathquill-editable" mathquill-block-id="1">
+      </div>
+    </div>
+  </section>
+
+<div id="defaultLatexBox" class="default-latex-box" style="display: none;">
+    <div class="box-container">
+        <div class="box-caption">
+            <h1>预设Latex表达式</h1>
+            <button id="defaultLatexBoxCloseBtn" class="close-box-btn">X</button>
+        </div>
+        <div class="box-content">
+            <div class="box-inner-content">
+                <ul>
+                    <li>a+b-c \div d \times e</li>
+                    <li>e = \lim_{n\to\infty} {\left(1+\frac{1}{n}\right)}</li>
+                    <li>\sum_{i=0}^{n-1} f(t_i) (x_{i+1}-x_i)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,259 @@
+.nav {
+    border-top: 1px solid #000000;
+    box-shadow: 0 1px 0px rgba(255, 255, 255, 0.1), inset 0 1px 0px rgba(255, 255, 255, 0.1);
+}
+
+.nav ul {
+    width: 1000px;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.nav ul li {
+    min-width: 80px;
+    height: 50px;
+    display: inline-block;
+    line-height: 50px;
+}
+
+.nav ul .selected {
+    background-color: #3d3d3d;
+}
+
+.nav ul li:HOVER {
+    background-color: #3d3d3d;
+}
+
+.nav ul a {
+    display: block;
+    padding: 0 20px;
+    color: #bdbdbd;
+}
+
+.nav ul a:HOVER {
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav .selected a {
+    color: #007edf;
+}
+
+.nav .selected a:HOVER {
+    color: #007edf;
+}
+
+#main_content .feature {
+    float: left;
+    width: 100%;
+    margin-bottom: 70px;
+}
+
+#main_content .feature h2 {
+    margin: 20px 0;
+}
+
+#main_content .feature p {
+    padding-left: 20px;
+}
+
+.clear {
+    clear: both;
+}
+
+.go-to-top {
+    width: 48px;
+    height: 48px;
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    background: #f2f2f2;
+    display: none;
+}
+
+.go-to-top a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url( ../images/up.png ) 0 0 no-repeat #f2f2f2;
+    opacity: 0.3;
+}
+
+.go-to-top a:HOVER {
+    opacity: 1;
+}
+
+.team-box {
+    padding: 0 20px;
+}
+
+.copyright {
+    font-size: 14px;
+}
+
+.footer-warp .copyright a {
+    text-decoration: none;
+    color: #007edf;
+}
+
+.copyright a:HOVER {
+    text-decoration: underline;
+}
+
+h1 {
+    font-size: 36px;
+    margin-top: 50px;
+}
+
+h2 {
+    margin-top: 50px;
+    font-size: 26px;
+}
+
+
+ html, body {
+      overflow-y: visible;
+    }
+
+    .latex-input-wrap .latex-input {
+      resize: none;
+      width: 100%;
+      height: 100px;
+      line-height: 1.5;
+      padding: 5px;
+      border: 1px solid #b3b3b3;
+    }
+
+    .latex-view-wrap {
+      margin-bottom: 50px;
+    }
+
+    .latex-input-wrap em {
+      display: block;
+      clear: both;
+    }
+
+    .latex-input-wrap .error-tip {
+      height: 20px;
+      line-height: 20px;
+      color: red;
+      font-size: 12px;
+      font-style: normal;
+      float: left;
+    }
+
+    .latex-input-wrap .default-latex-btn {
+      float: right;
+      padding: 5px 10px;
+    }
+
+    .parse-btn {
+      padding: 10px 30px;
+      margin: 40px 0;
+    }
+
+    .formula-container {
+      height: 300px;
+      padding: 20px 20px;
+      border: 1px solid #b3b3b3;
+    }
+
+    .formula-declaration {
+      margin-bottom: 80px;
+    }
+
+    .formula-notice ol {
+      margin: 15px;
+    }
+
+    /* 预设latex选择器 */
+    .default-latex-box {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: none;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .default-latex-box .box-container {
+
+      width: 800px;
+      height: 500px;
+      background: #f2f2f2;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -250px;
+      margin-left: -400px;
+      border: 1px solid white;
+      box-shadow: inset 0 0 5px rgba(255, 255, 0, 0.5), 0 0 10px rgba(0, 0, 0, 0.5);
+
+    }
+
+    .default-latex-box .box-caption {
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      background: black;
+    }
+
+    .default-latex-box .box-caption h1 {
+      padding: 0 0 0 10px;
+      margin: 0;
+      font-size: 1em;
+      color: rgb(255, 224, 0);
+      font-weight: normal;
+    }
+
+    .default-latex-box .close-box-btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 30px;
+      width: 50px;
+      height: 50px;
+      z-index: 9999;
+    }
+
+    .default-latex-box .box-content {
+      width: 100%;
+      height: 440px;
+      margin: 5px 0;
+      overflow: hidden;
+    }
+
+    .default-latex-box .box-content li {
+      line-height: 3;
+      font-size: 16px;
+    }
+
+    .default-latex-box .box-inner-content {
+      border: 1px solid #f2f2f2;
+      padding: 10px;
+      height: 400px;
+      overflow-y: auto;
+    }
+
+    .mathquill-rendered-math span {
+      line-height: 1;
+    }
+
+    .box-inner-content ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .box-inner-content ul li {
+      padding: 0 20px;
+      border-bottom: 1px solid #ECECEC;
+      cursor: pointer;
+    }
+
+    .box-inner-content ul li:HOVER {
+      background-color: #fcfcfc;
+    }
