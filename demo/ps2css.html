@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ps阴影转css3</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+
+    <style type="text/css">
+        body {
+            margin: auto 60px;
+            margin-bottom: 60px;
+        }
+
+        .shadow-demo {
+            width: 60px;
+            height: 60px;
+            background: #fff;
+        }
+    </style>
+
+    <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <script src="http://cdn.bootcss.com/angular.js/1.6.4/angular.js"></script>
+
+</head>
+<body>
+<div id="ps-css3" ng-controller="ps2cssController" class="ps-css">
+<form class="form-horizontal">
+    <fieldset>
+      <div id="legend" class="">
+        <legend class="">ps阴影转css3</legend>
+      </div>
+    <div class="form-group">
+
+          <!-- Text input-->
+          <label class="control-label" for="input01">颜色值</label>
+          <div class="controls">
+            <input id="input01" type="text" placeholder="颜色值" class="input-xlarge form-control" ng-model="color">
+            <p class="help-block">RBG格式，eg. 211，211，211</p>
+          </div>
+        </div>
+
+    <div class="form-group">
+
+          <!-- Text input-->
+          <label class="control-label" for="input02">不透明度</label>
+          <div class="controls">
+            <input id="input02" type="text" placeholder="不透明度" class="input-xlarge form-control" ng-model="opacity">
+            <p class="help-block">不透明度，eg. 0.79</p>
+          </div>
+        </div>
+
+    <div class="form-group">
+
+          <!-- Text input-->
+          <label class="control-label" for="input03">角度</label>
+          <div class="controls">
+            <input id="input03" type="text" placeholder="角度" class="input-xlarge form-control" ng-model="angle">
+            <p class="help-block">角度，eg. 145, 单位：度</p>
+          </div>
+        </div>
+
+
+
+    <div class="form-group">
+
+          <!-- Text input-->
+          <label class="control-label" for="input04">距离</label>
+          <div class="controls">
+            <input id="input04" type="text" placeholder="距离" class="input-xlarge form-control" ng-model="distance">
+            <p class="help-block">距离，eg. 2，单位：px</p>
+          </div>
+        </div>
+
+    <div class="form-group">
+
+          <!-- Text input-->
+          <label class="control-label" for="input05">扩展</label>
+          <div class="controls">
+            <input id="input05" type="text" placeholder="扩展" class="input-xlarge form-control" ng-model="spread">
+            <p class="help-block">扩展，eg. 6 单位：%</p>
+          </div>
+        </div>
+
+    <div class="form-group">
+
+          <!-- Text input-->
+          <label class="control-label" for="input06">大小</label>
+          <div class="controls">
+            <input id="input06" type="text" placeholder="大小" class="input-xlarge form-control" ng-model="size">
+            <p class="help-block">大小，eg. 5，单位：px</p>
+          </div>
+        </div>
+
+    <div class="form-group">
+          <label class="control-label"></label>
+
+        <!-- Button -->
+          <div class="controls">
+            <button class="btn btn-success" ng-click="onSave()">生成</button>
+          </div>
+        </div>
+
+    <div class="form-group">
+
+          <!-- Text input-->
+          <label class="control-label" >结果</label>
+          <div class="controls">
+            <p class="help-block">{{shadowString}}</p>
+          </div>
+        </div>
+
+    </fieldset>
+  </form>
+
+    <div class="shadow-demo" ng-style="shadow"> </div>
+</div>
+<script>
+
+var ps2css = angular.module('ps2css', []);
+
+
+ps2css.controller('ps2cssController', ['$timeout', '$scope', '$location', '$http',
+    function ($timeout, $scope, $location, $http) {
+
+        /*color: rgba(118,113,113,.75)
+         x-offset: 5 * cos(180°- 145°) = 4.09px
+         y-offset: 5 * sin(180°- 145°) = 2.87px
+         spread-radius: 10 * 6% = 0.6px
+         blur-radius: 10 - 0.6 = 9.4px;*/
+
+        var color = '';
+        var x = '';
+        var y = '';
+        var spread = '';
+        var blur = '';
+        $scope.shadow = '';
+
+        $scope.onSave = function () {
+            color = 'rgba(' + $scope.color + ',' + $scope.opacity + ')';
+            x = $scope.distance * Math.cos((180 - $scope.angle) * Math.PI / 180);
+            y = $scope.distance * Math.sin((180 - $scope.angle) * Math.PI / 180);
+            spread = $scope.size * $scope.spread / 100;
+            blur = $scope.size - spread;
+            $scope.shadow = {
+                'box-shadow': x.toFixed(1) + 'px ' + y.toFixed(1) + 'px ' + blur.toFixed(1) + 'px ' + spread.toFixed(1) + 'px ' + color
+            };
+            $scope.shadowString = JSON.stringify($scope.shadow)
+        }
+    }
+]);
+
+angular.bootstrap(document, ["ps2css"]);
+</script>
+</body>
+</html>
